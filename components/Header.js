@@ -26,7 +26,7 @@ const Header = ({ title }) => {
     if (user) {
       getFullName();
     }
-  }, []);
+  }, [user]);
 
   return (
     <View
