@@ -1,14 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { firebase } from "../config";
 
 const Header = ({ title }) => {
   const user = firebase.auth().currentUser;
+  const [fullName, setFullName] = useState("");
 
   async function logout() {
     await firebase.auth().signOut();
   }
+
+  function getFullName() {
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(firebase.auth().currentUser.uid)
+      .get()
+      .then((doc) => {
+        setFullName(doc.data().fullName);
+      });
+  }
+
+  useEffect(() => {
+    if (user) {
+      getFullName();
+    }
+  }, []);
 
   return (
     <View
@@ -20,7 +38,7 @@ const Header = ({ title }) => {
     >
       {user && <View style={{ width: 50 }} />}
       <Text style={{ fontWeight: "bold", fontSize: 20, color: "#fff" }}>
-        {title}
+        {user ? `Bienvenido ${fullName}` : title}
       </Text>
       {user && (
         <TouchableOpacity onPress={() => logout()}>
