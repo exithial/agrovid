@@ -38,6 +38,7 @@ const Login = () => {
         onChangeText={(text) => setEmail(text)}
         autoCapitalize="none"
         autoCorrect={false}
+        autoComplete="email"
         value={email}
       />
       <TextInput
