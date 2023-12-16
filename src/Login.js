@@ -5,9 +5,11 @@ import {
   TouchableOpacity,
   TextInput,
   StyleSheet,
+  Alert,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { firebase } from "../config";
+import { validateEmail } from "../functions";
 
 const Login = () => {
   const navigation = useNavigation();
@@ -16,9 +18,15 @@ const Login = () => {
 
   async function loginUser() {
     try {
-      await firebase.auth().signInWithEmailAndPassword(email, password);
+      if (email === "" || password === "") {
+        Alert.alert("Debe llenar todos los campos");
+      } else if (!validateEmail(email)) {
+        Alert.alert("Email con formato inválido");
+      } else {
+        await firebase.auth().signInWithEmailAndPassword(email, password);
+      }
     } catch (error) {
-      alert(error.message);
+      Alert.alert(error.message);
     }
   }
 
@@ -43,6 +51,9 @@ const Login = () => {
       />
       <TouchableOpacity style={styles.button} onPress={() => loginUser()}>
         <Text style={styles.buttonText}>Ingresar</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+        <Text style={styles.registerText}>Registro</Text>
       </TouchableOpacity>
     </View>
   );
@@ -70,6 +81,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#fff",
     textAlign: "center",
+  },
+  registerText: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#3E4424",
+    textAlign: "center",
+    marginTop: 20,
   },
 });
 

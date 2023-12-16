@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StyleSheet, Text } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
 
 import Header from "./components/Header";
 import Login from "./src/Login";
@@ -45,6 +46,15 @@ const App = () => {
           options={{
             headerTitle: () => <Header title="Registro" />,
             headerStyle: styles.header,
+            headerLeft: (props) => (
+              <AntDesign
+                style={{ marginLeft: 16 }}
+                name="back"
+                size={24}
+                color="white"
+                {...props}
+              />
+            ),
           }}
         />
       </Stack.Navigator>
