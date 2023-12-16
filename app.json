@@ -33,6 +33,12 @@
         "projectId": "8ad5f042-fb9d-4fcf-914a-dad30f68f8f2"
       }
     },
-    "owner": "eseg"
+    "owner": "eseg",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/8ad5f042-fb9d-4fcf-914a-dad30f68f8f2"
+    }
   }
 }
