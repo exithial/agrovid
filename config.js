@@ -1,7 +1,7 @@
 // Configuración de llave de firebase
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
-import "firebase/compat/firestore ";
+import "firebase/compat/firestore";
 
 // Configuración WebApp firebase
 const firebaseConfig = {
@@ -14,8 +14,6 @@ const firebaseConfig = {
   measurementId: "G-0MG5FXHWQX",
 };
 
-if (!firebase.app.length) {
-  firebase.initializeApp(firebaseConfig);
-}
+firebase.initializeApp(firebaseConfig);
 
 export { firebase };
