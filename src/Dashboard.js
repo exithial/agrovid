@@ -1,14 +1,17 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import React from "react";
+import { ActivityIndicator } from "react-native";
+import { WebView } from "react-native-webview";
 
 const Dashboard = () => {
   return (
-    <View>
-      <Text>Dashboard</Text>
-    </View>
+    <WebView
+      style={{ flex: 1 }}
+      source={{ uri: "https://agrovid.cl/" }}
+      startInLoadingState={true}
+      javaScriptEnabled={true}
+      domStorageEnabled={true}
+    />
   );
 };
-
-Dashboard.defaultProps = {};
 
 export default Dashboard;
