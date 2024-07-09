@@ -8,6 +8,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "apk": "eas build -p android --profile apk",
+    "export-web": "npx expo export --platform web",
     "expogo": "eas update --auto"
   },
   "dependencies": {
