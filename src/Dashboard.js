@@ -1,16 +1,8 @@
 import React from "react";
-import { WebView } from "react-native-webview";
+import { View } from "react-native";
 
 const Dashboard = () => {
-  return (
-    <WebView
-      style={{ flex: 1 }}
-      source={{ uri: "https://agrovid.cl/" }}
-      startInLoadingState={true}
-      javaScriptEnabled={true}
-      domStorageEnabled={true}
-    />
-  );
+  return <View></View>;
 };
 
 export default Dashboard;
